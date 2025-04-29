@@ -1,10 +1,9 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { NavLink, } from "react-router";
 import '../Styles/Navbar.css'
 import { AuthContext } from "../Context/AuthContext";
 const Navbar = () => {
     const {user,LogoutUser} = use(AuthContext);
-    console.log(user?.email)
 
     const handlerSignOut=()=>{
       LogoutUser()
@@ -20,6 +19,14 @@ const Navbar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/login'}>Login</NavLink></li>
         <li><NavLink to={'/signUp'}>SignUp</NavLink></li>
+        <li><NavLink to={'/profile'}>Profile</NavLink></li>
+        {
+          user && 
+          <>
+          <li><NavLink to={'/order'}>Order</NavLink></li>
+          <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+          </>
+        }
     </>
 
   return (

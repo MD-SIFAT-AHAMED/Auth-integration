@@ -3,6 +3,10 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
+import Orders from "../Pages/Orders";
+import Dashboard from "../Pages/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../Pages/Profile";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -19,7 +23,27 @@ const router = createBrowserRouter([{
         {
             path:'signUp',
             Component:SignUp
+        },
+        {
+            path:'/order',
+            element: <PrivateRoute>
+                        <Orders/>
+                    </PrivateRoute>
+           
+        },
+        {
+            path:'/dashboard',
+            element: <PrivateRoute>
+                        <Dashboard/>
+                    </PrivateRoute>
+        },
+        {
+            path:'/profile',
+            element: <PrivateRoute>
+                        <Profile/>
+                    </PrivateRoute>
         }
+        
     ]
 }])
 

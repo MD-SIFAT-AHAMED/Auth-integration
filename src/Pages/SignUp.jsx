@@ -2,7 +2,7 @@ import React, { use, useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { AuthContext } from "../Context/AuthContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const SignUp = () => {
 
@@ -10,6 +10,8 @@ const SignUp = () => {
   const [success,setSuccess] = useState('');
   const [errorMessage,setErrorMessage] = useState('');
   const [showPassword,setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
     const handlerSingUp=(e)=>{
        e.preventDefault();
        
@@ -33,6 +35,7 @@ const SignUp = () => {
           displayName:name
         }
         updateUserName(userName);
+        navigate('/');
         setSuccess("User Create Success");
        })
        .catch((err)=>{
